@@ -14,9 +14,8 @@ export const getTeam = () => {
             headers: {
                 'X-Auth-Token' : '5574cdbc43b04887b4f8bd52329d0c3f'
             }})
-            .then((response) => {
-        (getTeamPlayers(response.data.squad))
-    })
+            .then((response) => response.data.squad
+    )
     }
 }
 
