@@ -7,9 +7,10 @@ export const CONSTANTS =  {
 
 
 
-export const getTeam = () => {
-        return(dispatch) =>{
-        return axios.get("https://api.football-data.org//v2/teams/2")
+export const getTeam = (dispatch) => {
+        return {
+        type: CONSTANTS.REQUEST_TEAMS,
+        dispatch : axios.get("https://api.football-data.org//v2/teams/2")
             .then((response) => {
         dispatch(getTeamPlayers(response.data.squad))
     })
