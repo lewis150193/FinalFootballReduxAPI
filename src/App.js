@@ -14,6 +14,8 @@ class App extends Component {
 
       store.dispatch(getTeamPlayers(344))
       store.dispatch(getTeamPlayers(344))
+      store.dispatch(getTeam(16))
+
 
 
 
