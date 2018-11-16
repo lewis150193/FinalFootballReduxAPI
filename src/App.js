@@ -2,14 +2,22 @@ import React from 'react';
 import {createStore, applyMiddleware} from 'redux'
 import {reducer} from "./components/reducers";
 import { getTeam } from "./components/actions";
-import { persist, store } from "./components/store";
+//import { persist, store } from "./components/store";
 import thunk from "redux-thunk";
-
+//import { connect } from 'react-redux';
 
 class App extends React.Component {
     componentWillMount() {
-        //WHERE I AM TRYING TO ADD THE STORE.
-    }
+        const store = createStore(reducer, applyMiddleware(thunk))
+        store.subscribe(() => {
+            console.log("Store changed ", store.getState())
+        });
+         store.dispatch(getTeam(2))
+
+    };
+
+
+
 
   render() {
 
@@ -22,6 +30,7 @@ class App extends React.Component {
 }
 
 export default App;
+
 
 /**
  * store.subscribe(() => {
