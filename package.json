@@ -6,9 +6,12 @@
     "axios": "^0.18.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-native": "^0.57.5",
+    "react-native-simple-radio-button": "^2.7.3",
     "react-scripts": "2.1.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
+    "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
@@ -25,5 +28,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.1.0"
+  }
 }

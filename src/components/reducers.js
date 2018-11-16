@@ -5,7 +5,9 @@ export const reducer = (state = [], action) => {
         case CONSTANTS.GETPLAYERS:
             return [...state , action.value]
         case CONSTANTS.REQUEST_TEAMS:
-            return[...state, action.dispatch]
+            return[action.dispatch]
+        case CONSTANTS.ADDNUMBERS:
+            return state + action.test.name
         default:
             return state
     }
