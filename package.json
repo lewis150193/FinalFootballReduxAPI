@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "prop-types": "latest",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-native": "^0.57.5",
@@ -14,8 +15,8 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.10.0",
-    "redux-thunk": "^2.3.0",
-    "prop-types": "latest"
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

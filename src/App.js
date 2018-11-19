@@ -1,29 +1,11 @@
 import React from 'react';
-import {createStore, applyMiddleware} from 'redux'
-import {reducer} from "./components/reducers";
-import { getTeam } from "./components/actions";
-//import { persist, store } from "./components/store";
-import thunk from "redux-thunk";
-//import { connect } from 'react-redux';
+import Player from "./components/Player";
 
 class App extends React.Component {
-    componentWillMount() {
-        const store = createStore(reducer, applyMiddleware(thunk))
-        store.subscribe(() => {
-            console.log("Store changed ", store.getState())
-        });
-         store.dispatch(getTeam(2))
-
-    };
-
-
-
-
   render() {
-
       return (
       <div>
-
+        <Player />
       </div>
     );
   }
@@ -33,17 +15,15 @@ export default App;
 
 
 /**
- * store.subscribe(() => {
-            console.log("Store changed ", store.getState())
-        });
-
- const store = createStore(reducer)
+ const store = createStore(reducer, applyMiddleware(thunk))
  store.subscribe(() => {
-            console.log("Store changed ", store.getState())
-        })
+            console.log("Store changed ", store.getState()
+            )
+            this.setState({players: store.getState()})
+            console.log(this.state.players)
 
- store.dispatch(getTeamPlayers(344))
- store.dispatch(getTeamPlayers(344))
- store.dispatch(getTeam(16))
+
+        });
+ store.dispatch(getTeam(3))
 
  */

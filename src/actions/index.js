@@ -6,19 +6,26 @@ export const CONSTANTS =  {
     ADDNUMBERS: 'ADD_NUMBERS'
 };
 
+const Token = '5574cdbc43b04887b4f8bd52329d0c3f';
 
 
-export const getTeam = (team) => async  (dispatch) =>{
-        const res = await axios.get("https://api.football-data.org//v2/teams/" + team +"", {
+
+export const getTeam = (team) => async  () =>{
+        const res = await axios.get(`https://api.football-data.org//v2/teams/${team}`, {
             headers: {
-                'X-Auth-Token' : '5574cdbc43b04887b4f8bd52329d0c3f'
+                'X-Auth-Token' : Token
             }})
             .then((response) => response.data.squad.map((player) =>{
                     return player.name
 
                 })
             )
-        dispatch({ type: CONSTANTS.REQUEST_TEAMS, dispatch: res });
+
+            return {
+            type: CONSTANTS.REQUEST_TEAMS,
+            dispatch: res
+            }
+
 
 };
 
@@ -41,5 +48,6 @@ export const addNumbers = (one,two,name) => {
 
     }
 };
+
 
 
