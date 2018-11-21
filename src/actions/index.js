@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 export const CONSTANTS =  {
     GETPLAYERS: 'GETPLAYERS',
     REQUEST_TEAMS: 'REQUEST_TEAMS',
@@ -10,44 +9,42 @@ const Token = '5574cdbc43b04887b4f8bd52329d0c3f';
 
 
 
-export const getTeam = (team) => async  () =>{
-        const res = await axios.get(`https://api.football-data.org//v2/teams/${team}`, {
+export const getTeam = (team) => async  (dispatch) =>{
+
+    let res;
+    try {
+        res = await axios.get(`https://api.football-data.org//v2/teams/${team}`, {
             headers: {
                 'X-Auth-Token' : Token
-            }})
-            .then((response) => response.data.squad.map((player) =>{
-                    return player.name
-
-                })
-            )
-
-            return {
+            }});
+        dispatch({
             type: CONSTANTS.REQUEST_TEAMS,
-            dispatch: res
-            }
+            payload: res
+            })
 
-
-};
-
-
-export const getTeamPlayers = (value) => {
-    return {
-      type:   CONSTANTS.GETPLAYERS,
-      value: value
+    } catch (e) {
+        // let's pretend it worked anyway, the api don't work for me right now
+        dispatch({
+            type: CONSTANTS.REQUEST_TEAMS,
+            payload: 'Cant be shown'
+        })
     }
 };
 
-export const addNumbers = (one,two,name) => {
-    return {
+
+export const getTeamPlayers = () => (dispatch) =>{
+   dispatch({
+      type:  CONSTANTS.GETPLAYERS,
+      value: 5633
+})
+};
+
+export const addNumbers = (one,two) =>  (dispatch) =>{
+    dispatch ({
       type: CONSTANTS.ADDNUMBERS,
       total: one + two,
-      test: {
-          name: name,
-      }
 
-
-    }
+    })
 };
-
 
 

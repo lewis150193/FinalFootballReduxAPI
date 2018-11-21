@@ -1,19 +1,24 @@
 import {CONSTANTS} from "../actions/index";
 import {combineReducers} from 'redux'
 
-export const reducer = (state = [], action) => {
+export const PlayerReducer = (state = [], action) => {
     switch (action.type) {
         case CONSTANTS.GETPLAYERS:
-            return [...state , action.value]
+            return  [state]
         case CONSTANTS.REQUEST_TEAMS:
-            return[...state, action.dispatch]
+           return [
+               action.payload.data.squad.map(player => {
+               return player.name
+                    })
+           ]
         case CONSTANTS.ADDNUMBERS:
-            return state + action.test.name
+            return [...state + action.total]
         default:
             return state
     }
 }
 
 export default combineReducers({
-    reducer: reducer
+    reducer: PlayerReducer
 })
+

@@ -1,8 +1,9 @@
-import React from 'react';
-import Player from "./components/Player";
-
+import React  from 'react';
+import Player from './components/Player'
 class App extends React.Component {
-  render() {
+
+
+    render() {
       return (
       <div>
         <Player />
